@@ -1,0 +1,58 @@
+LOCUS       AF117710                 562 bp    mRNA    linear   PRI 09-MAR-1999
+DEFINITION  Homo sapiens hemoglobin beta chain (HBB) mRNA, complete cds.
+ACCESSION   AF117710
+VERSION     AF117710.1
+KEYWORDS    .
+SOURCE      Homo sapiens (human)
+  ORGANISM  Homo sapiens
+            Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+            Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+            Catarrhini; Hominidae; Homo.
+REFERENCE   1  (bases 1 to 562)
+  AUTHORS   Kutlar,F., Harbin,J., Brisco,J. and Kutlar,A.
+  TITLE     Rapid detection of electrophoretically silent, unstable human
+            hemoglobin 'Louisville', (Beta; Phe 42 Leu/TTT to CTT) by cDNA
+            sequencing of mRNA
+  JOURNAL   Unpublished
+REFERENCE   2  (bases 1 to 562)
+  AUTHORS   Kutlar,F., Harbin,J., Brisco,J. and Kutlar,A.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-JAN-1999) Medicine, Medical College of Georgia, Laney
+            Walker, AC-1000, Hemoglobin Lab., Augusta, GA 30912, USA
+FEATURES             Location/Qualifiers
+     source          1..562
+                     /organism="Homo sapiens"
+                     /mol_type="mRNA"
+                     /db_xref="taxon:9606"
+                     /chromosome="11"
+                     /map="11p15.5"
+                     /cell_type="reticulocyte"
+                     /tissue_type="whole blood"
+                     /note="unstable hemoglobin had been separated from normal
+                     beta chain, by the reversed phase HPLC on a C4 column and
+                     eluted between the beta chain and alpha chain on the
+                     chromatogram"
+     gene            1..562
+                     /gene="HBB"
+     CDS             31..474
+                     /gene="HBB"
+                     /note="unstable hemoglobin; hemoglobin 'Louisville'"
+                     /codon_start=1
+                     /product="hemoglobin beta chain"
+                     /protein_id="AAD19696.1"
+                     /translation="MVHLTPEEKSAVTALWGKVNVDEVGGEALGRLLVVYPWTQRFLE
+                     SFGDLSTPDAVMGNPKVKAHGKKVLGAFSDGLAHLDNLKGTFATLSELHCDKLHVDPE
+                     NFRLLGNVLVCVLAHHFGKEFTPPVQAAYQKVVAGVANALAHKYH"
+ORIGIN      
+        1 tgtgttcact agcaacctca aacagacacc atggtgcacc tgactcctga ggagaagtct
+       61 gccgttactg ccctgtgggg caaggtgaac gtggatgaag ttggtggtga ggccctgggc
+      121 aggctgctgg tggtctaccc ttggacccag aggttccttg agtcctttgg ggatctgtcc
+      181 actcctgatg ctgttatggg caaccctaag gtgaaggctc atggcaagaa agtgctcggt
+      241 gcctttagtg atggcctggc tcacctggac aacctcaagg gcacctttgc cacactgagt
+      301 gagctgcact gtgacaagct gcacgtggat cctgagaact tcaggctcct gggcaacgtg
+      361 ctggtctgtg tgctggccca tcactttggc aaagaattca ccccaccagt gcaggctgcc
+      421 tatcagaaag tggtggctgg tgtggctaat gccctggccc acaagtatca ctaagctcgc
+      481 tttcttgctg tccaatttct attaaaggtt cctttgttcc ctaagtccaa ctactaaact
+      541 gggggatatt atgaagggcc tt
+//
+
