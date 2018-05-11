@@ -1,0 +1,29 @@
+Demo Plan
+
+Expalin how basic works 
+	Show table scoring table
+	Show alignment
+
+Explain about not having a gap penelty when before/start chain
+	Expalin why
+	Show table scoring table
+	Show alignment
+
+Explain local Sequence
+	Explain why
+	Show table scoring table
+	Show alignment
+Expalin hwo many of thsi type could be used to produce a better algorithm 
+
+Explain about growing gap penelty 
+	Explain why
+	Show table scoring table
+	Show alignment
+
+Explain about opening gap penelty 
+	Explain why
+	Show table scoring table
+	Show alignment
+
+Show how deals with junk char
+Show can change gap penelty

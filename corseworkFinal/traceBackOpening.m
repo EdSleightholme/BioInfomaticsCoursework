@@ -1,40 +1,41 @@
 function [ alginment,fin ] = traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,pos2,gap,gapOpen)
     alginment=zeros(3,1);
-    fin=false;
+    fin=false;%To see if at end of alignment
     [s1,s2] = size(scoreMatrix);
      %see if possible to go one cell left from current cell
     try    
         %see if need apply opening penlty
         if (gap(pos1-1,pos2)==1)
             if((scoreMatrix(pos1-1,pos2)+(gapOpen))==(scoreMatrix(pos1,pos2) && pos2~=s2 &&pos2~=0) )
-      
-        [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap,gapOpen);
-        %if good path append to final alginment
-        if (fin2==true)
-            fin=true;
-            toAdd=zeros(3,1);
-            toAdd(1,1)=seq1(pos1-1);
-            toAdd(2,1)=' ';
-            toAdd(3,1)='-';
-            alginment = [alginment2,toAdd];
-        end
+                %move next location
+                [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap,gapOpen);
+                %if good path append to final alginment
+                if (fin2==true)
+                    fin=true;
+                    toAdd=zeros(3,1);
             
-           end
+                    toAdd(1,1)=seq1(pos1-1);
+                    toAdd(2,1)=' ';
+                    toAdd(3,1)='-';
+                    alginment = [alginment2,toAdd];
+                end
+            
+            end
         else
-    if((scoreMatrix(pos1-1,pos2)+(gapPen*gap(pos1-1,pos2)))==(scoreMatrix(pos1,pos2) && pos2~=s2 &&pos2~=0) )
+            if((scoreMatrix(pos1-1,pos2)+(gapPen*gap(pos1-1,pos2)))==(scoreMatrix(pos1,pos2) && pos2~=s2 &&pos2~=0) )
       
-        [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap,gapOpen);
-        %if good path append to final alginment
-        if (fin2==true)
-            fin=true;
-            toAdd=zeros(3,1);
-            toAdd(1,1)=seq1(pos1-1);
-            toAdd(2,1)=' ';
-            toAdd(3,1)='-';
-            alginment = [alginment2,toAdd];
-        end
+                [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap,gapOpen);
+                %if good path append to final alginment
+                if (fin2==true)
+                    fin=true;
+                    toAdd=zeros(3,1);
+                    toAdd(1,1)=seq1(pos1-1);
+                    toAdd(2,1)=' ';
+                    toAdd(3,1)='-';
+                    alginment = [alginment2,toAdd];
+                end
     
-    end
+            end
         end
     catch
         
@@ -46,33 +47,33 @@ function [ alginment,fin ] = traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,
        if  (gap(pos1,pos2-1)==1)
            if((scoreMatrix(pos1,pos2-1)+(gapOpen))==(scoreMatrix(pos1,pos2) &&pos1~=s2 &&pos1~=0) )
           
-        [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap,gapOpen);
+            [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap,gapOpen);
         %if good path append to final alginment
-         if (fin2==true)
-            fin=true;
-            toAdd=zeros(3,1);
-            toAdd(1,1)='-';
-            toAdd(2,1)=' ';
-            toAdd(3,1)=seq2(pos2-1);
-            alginment = [alginment2,toAdd];
-         end
+                if (fin2==true)
+                fin=true;
+                toAdd=zeros(3,1);
+                toAdd(1,1)='-';
+                toAdd(2,1)=' ';
+                toAdd(3,1)=seq2(pos2-1);
+                alginment = [alginment2,toAdd];
+                end
       
            end
        else
-    if((scoreMatrix(pos1,pos2-1)+(gapPen*gap(pos1,pos2-1)))==(scoreMatrix(pos1,pos2) &&pos1~=s2 &&pos1~=0) )
+            if((scoreMatrix(pos1,pos2-1)+(gapPen*gap(pos1,pos2-1)))==(scoreMatrix(pos1,pos2) &&pos1~=s2 &&pos1~=0) )
           
-        [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap,gapOpen);
+            [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap,gapOpen);
         %if good path append to final alginment
-         if (fin2==true)
-            fin=true;
-            toAdd=zeros(3,1);
-            toAdd(1,1)='-';
-            toAdd(2,1)=' ';
-            toAdd(3,1)=seq2(pos2-1);
-            alginment = [alginment2,toAdd];
-         end
+            if (fin2==true)
+                fin=true;
+                toAdd=zeros(3,1);
+                toAdd(1,1)='-';
+                toAdd(2,1)=' ';
+                toAdd(3,1)=seq2(pos2-1);
+                alginment = [alginment2,toAdd];
+            end
       
-    end
+            end
        end
     catch
         
@@ -153,12 +154,12 @@ function [ alginment,fin ] = traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,
       [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap,gapOpen);
       %if good path append to final alginment
       if (fin2==true)
-      fin=true;
-      toAdd=zeros(3,1);
-      toAdd(1,1)='-';
-      toAdd(2,1)=' ';
-      toAdd(3,1)=seq2(pos2-1);
-     alginment = [alginment2,toAdd];
+        fin=true;
+        toAdd=zeros(3,1);
+        toAdd(1,1)='-';
+        toAdd(2,1)=' ';
+        toAdd(3,1)=seq2(pos2-1);
+        alginment = [alginment2,toAdd];
       end
       
   end
@@ -173,12 +174,12 @@ function [ alginment,fin ] = traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,
       [alginment2,fin2]=traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap,gapOpen);
       %if good path append to final alginment
       if (fin2==true)
-      fin=true;
-      toAdd=zeros(3,1);
-      toAdd(1,1)=seq1(pos1-1);
-      toAdd(2,1)=' ';
-      toAdd(3,1)='-';
-      alginment = [alginment2,toAdd];
+        fin=true;
+        toAdd=zeros(3,1);
+        toAdd(1,1)=seq1(pos1-1);
+        toAdd(2,1)=' ';
+        toAdd(3,1)='-';
+        alginment = [alginment2,toAdd];
       end
       
   end
@@ -193,9 +194,6 @@ function [ alginment,fin ] = traceBackOpening(scoreMatrix,seq1,seq2,gapPen,pos1,
     end
     
 
-    
-    output(1)=pos1;
-    output(2)=pos2;
-    alginment=alginment;
+
 end
 

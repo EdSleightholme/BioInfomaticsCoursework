@@ -1,12 +1,12 @@
 function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos2,gap)
     alginment=zeros(3,1);
-    fin=false;
+    fin=false;%To see if at end of alignment
     [s1,s2] = size(scoreMatrix);
     
     %see if possible to go one cell left from current cell
     try    
-    if((scoreMatrix(pos1-1,pos2)+(gapPen*gap(pos1-1,pos2)))==(scoreMatrix(pos1,pos2) && pos2~=s2 &&pos2~=0) )
-      
+    if(((scoreMatrix(pos1-1,pos2)+(gapPen*gap(pos1-1,pos2)))==(scoreMatrix(pos1,pos2))) && pos2~=s2 &&pos2~=0)
+        %move next location
         [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap);
         %if good path append to final alginment
         if (fin2==true)
@@ -25,7 +25,8 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
     
     try
         %see if possible to go one cell up from current cell
-    if((scoreMatrix(pos1,pos2-1)+(gapPen*gap(pos1,pos2-1)))==(scoreMatrix(pos1,pos2) &&pos1~=s2 &&pos1~=0) )
+    if((scoreMatrix(pos1,pos2-1)+(gapPen*gap(pos1,pos2-1)))==(scoreMatrix(pos1,pos2)) &&pos1~=s2 &&pos1~=0)
+        %move next location
         [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap);
          %if good path append to final alginment
          if (fin2==true)
@@ -44,7 +45,7 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
     %see if possible to go diagonal from current cell
     try
     if((scoreMatrix(pos1-1,pos2-1)+getBlosum62Score(seq1(pos1-1),seq2(pos2-1)))==scoreMatrix(pos1,pos2))
-     
+     %move next location
         [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2-1,gap);
         %if good path append to final alginment
         if(fin2==true)
@@ -73,7 +74,7 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
   %see if on edge is posssible to move left
   try
   if(pos1==s1 && (scoreMatrix(pos1,pos2))==(scoreMatrix(pos1,pos2-1)))
-
+        %move next location
       [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap);
        %if good path append to final alginment
       if (fin2==true)
@@ -92,6 +93,7 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
   %see if on edge is posssible to move up
   try
   if(pos2==s2 && scoreMatrix(pos1,pos2)==scoreMatrix(pos1-1,pos2))
+      %move next location
       [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap);
       %if good path append to final alginment
       if (fin2==true)
@@ -110,7 +112,7 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
   %see if on edge is posssible to move left
   try
   if(pos1==1 && scoreMatrix(pos1,pos2)==scoreMatrix(pos1,pos2-1))
-  
+  %move next location
       [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos2-1,gap);
       %if good path append to final alginment
       if (fin2==true)
@@ -129,8 +131,8 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
 %see if on edge is posssible to move up
   try
   if(pos2==1 && scoreMatrix(pos1,pos2)==scoreMatrix(pos1-1,pos2))
-        
-      [alginment2,fin2]=traceBack(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap);
+        %move next location
+      [alginment2,fin2]=traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1-1,pos2,gap);
       %if good path append to final alginment
       if (fin2==true)
       fin=true;
@@ -151,11 +153,6 @@ function [ alginment,fin ] = traceBackGrow(scoreMatrix,seq1,seq2,gapPen,pos1,pos
         alginment=zeros(3,1);
         fin=true;
     end
-    
 
-    
-    output(1)=pos1;
-    output(2)=pos2;
-    alginment=alginment;
 end
 

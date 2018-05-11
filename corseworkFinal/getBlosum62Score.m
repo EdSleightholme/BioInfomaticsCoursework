@@ -50,6 +50,9 @@ function [ output ] = getBlosum62Score( char1,char2 )
         case 'X' 
             temp1=23;
         otherwise
+            disp('Unknown chacter found in sequance')
+            disp(char1)
+            error('Unknown chacter found in sequance')
             temp1=24;
     end
     temp2=temp1;
@@ -101,7 +104,9 @@ function [ output ] = getBlosum62Score( char1,char2 )
         case 'X' 
             temp1=23;
         otherwise
-            temp1=24;
+            disp('Unknown chacter found in string')
+            disp(char2)
+            error('Unknown chacter found in sequance')
     end
     output=scoringMatrix(temp2,temp1);
 end
